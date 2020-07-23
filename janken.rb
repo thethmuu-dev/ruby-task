@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+$hands = {
+  0 => 'Rock',
+  1 => 'Paper',
+  2 => 'Scissors'
+}
+
 # let the player make input
 class Player
   def get_gesture_name(hash, key)
@@ -7,18 +13,12 @@ class Player
   end
 
   def hand
-    hands = {
-      0 => 'Rock',
-      1 => 'Paper',
-      2 => 'Scissors'
-    }
-
     loop do
       puts 'Enter a number.'
       puts '0: Rock, 1: Paper, 2: Scissors'
       input_hand = gets.chomp.to_i
       if input_hand < 3
-        puts "You entered #{get_gesture_name(hands, input_hand)}."
+        puts "You entered #{get_gesture_name($hands, input_hand)}."
         break
       else
         puts 'Enter the number again.'
@@ -30,8 +30,19 @@ end
 
 # make opponent input
 class Opponent
-  def hand; end
+  def hand
+    puts "Computer entered #{$hands[rand($hands.length)]}."
+  end
+end
+
+class ClassName
+  def initialize
+    
+  end
 end
 
 player = Player.new
 player.hand
+
+opponent = Opponent.new
+opponent.hand
