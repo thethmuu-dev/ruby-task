@@ -18,8 +18,9 @@ class Player
       puts '0: Rock, 1: Paper, 2: Scissors'
       input_hand = gets.chomp.to_i
       if input_hand < 3
-        puts "You entered #{get_gesture_name($hands, input_hand)}."
-        break
+        player_hand = get_gesture_name($hands, input_hand)
+        puts "You entered #{player_hand}."
+        return player_hand
       else
         puts 'Enter the number again.'
         # puts '0: goo, 1: choki, 2: par'
@@ -31,13 +32,18 @@ end
 # make opponent input
 class Opponent
   def hand
-    puts "Computer entered #{$hands[rand($hands.length)]}."
+    opponent_hand = $hands[rand($hands.length)]
+    puts "Opponent entered #{opponent_hand}."
+    return opponent_hand
   end
 end
 
-class ClassName
-  def initialize
-    
+# Janken Decision
+class Janken
+  def pon(player_hand, opponent_hand)
+    if 1==1
+      puts "You Win as it is #{player_hand} and #{opponent_hand}"
+    end
   end
 end
 
@@ -46,3 +52,6 @@ player.hand
 
 opponent = Opponent.new
 opponent.hand
+
+janken = Janken.new
+janken.pon(player_hand, opponent_hand)
